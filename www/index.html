@@ -49,40 +49,50 @@
 			
 		
 		
-    <script type='text/javascript'>
-		var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
-		var filehandler="";
-		var contents="";
-		var db = window.openDatabase("Database2", "1.0", "FLYAPP", 200000);
-		
-		function errorHandler(transaction, error) {
-        alert('Error: ' + error.message + ' code: ' + error.code);
-		}
-		
-		function updatecontents() {
-				alert('update contents');
-		} 
+    <script type="text/javascript" charset="utf-8">
 
-		
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    // Populate the database
+    //
+    function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    }
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
+
+    </script>
+
+
+	<script type="text/javascript" charset="utf-8">
 		jQuery(document).ready(function() {
-			db.transaction(function(transaction) {
-			populateDB(transaction);
-					//alert("populate db");
-				},errorHandler,updatecontents);
-
+			
 		});
-		</script>
+	</script>
 		
-		<script type='text/javascript'>
-		function populateDB(tx) {
-		//alert('populateDB');
-		//tx.executeSql('DROP TABLE IF EXISTS images ',[],nullHandler,errorHandler);
-		//tx.executeSql('DROP TABLE IF EXISTS appdata',[],nullHandler,errorHandler);
-		tx.executeSql("CREATE TABLE IF NOT EXISTS `images` (`ImageID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`Path` VARCHAR(255) NULL,`Title` VARCHAR(255) NULL,`Caption` TEXT NULL,`Caption2` TEXT NULL,`URL` VARCHAR(255) NULL,`ad` VARCHAR(255) NULL,`fordate` VARCHAR(15) NULL,`showdate` VARCHAR(15) NULL,`daynumber` VARCHAR(15) NULL,`installdate` Date NULL)",[],nullHandler,errorHandler);
-		tx.executeSql("CREATE TABLE IF NOT EXISTS `appdata` (`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`installdate` VARCHAR(15) NULL)",[],nullHandler,errorHandler);
-		//alert("populate db function call");
-		}
-		</script>
+		
 		
 		<script type="text/javascript">
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
