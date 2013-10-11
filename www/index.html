@@ -31,7 +31,7 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquerymobilemin.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<script type="text/javascript" src="js/cordova.js"></script>
+		<script type="text/javascript" src="js/phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/swipeview.js"></script>
 		<script type="text/javascript" src="js/jquerymin.js"></script>
@@ -58,6 +58,7 @@
     // device APIs are available
     //
     function onDeviceReady() {
+		alert('device ready');
         var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
@@ -88,7 +89,7 @@
 
 	<script type="text/javascript" charset="utf-8">
 		jQuery(document).ready(function() {
-			
+			alert('document ready');
 		});
 	</script>
 		
