@@ -8,10 +8,7 @@
         PhoneGap Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
-	<feature name="Storage">
-		<param name="android-package" value="org.apache.cordova.Storage" />
-	</feature>
-
+	<plugin name="Storage" value="org.apache.cordova.Storage" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
