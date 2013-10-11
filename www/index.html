@@ -29,7 +29,6 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquerymobilemin.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -44,7 +43,7 @@
         
         <title>Hello World</title>
     </head>
-    <body onload="onLoad()">
+    <body onload="onLoad();">
         <div id="wrapper"></div>
 			
 		
@@ -94,14 +93,9 @@
 
 	
 		jQuery(document).ready(function() {
-			document.addEventListener("deviceready", onDeviceReady, true);
+			
 		});
-		
-		window.addEventListener('load', function () {
-			document.addEventListener('deviceready', function () {
-			alert("PhoneGap is now loaded!");
-			}, false);
-		}, false);
+
 	</script>
 		
 		
