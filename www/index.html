@@ -53,8 +53,7 @@
 
     // Wait for device API libraries to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
+	
     // device APIs are available
     //
     function onDeviceReady() {
@@ -89,7 +88,7 @@
 
 	<script type="text/javascript" charset="utf-8">
 		jQuery(document).ready(function() {
-			alert('document ready');
+			document.addEventListener("deviceready", onDeviceReady, true);
 		});
 	</script>
 		
