@@ -60,7 +60,16 @@
 		
     // Wait for device API libraries to load
     //
-	
+	function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+	}
+
 	function dateAddDays(datstr,ndays){
 	
 		alert(datstr+ndays);
@@ -240,7 +249,7 @@
 						
 						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						//alert(___installdate+" "+v['path']);
-						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+						transaction.executeSql("insert into images(Path,Title,Caption,fordate) values ('"+v['path']+"','"+replaceall(v['title'],"'","`")+"','"+replaceall(v['caption'],"'","`")+"','"+v['fordate']+"')",[],nullHandler,errorHandler);
 						
 						});
 					},errorHandler,successCB2);
