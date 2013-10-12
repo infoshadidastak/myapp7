@@ -56,6 +56,7 @@
 		var month1="";
 		var day1="";
 		var year1="";
+		var slidesarray=[];
 		
     // Wait for device API libraries to load
     //
@@ -146,13 +147,15 @@
     //
 	
 	function successCB2() {
+				slidesarray=[];
 				var query="select * from images";
 				db.transaction(function(transaction) {
 				    transaction.executeSql(query,[],function(transaction, result) {
 						if (result != null && result.rows != null) {
 							for (var i = 0; i < result.rows.length; i++) {
 								var row = result.rows.item(i);
-								alert(row['Path']);
+								var img_array={img:row['Path'],width:350,height:435,desc:"<div style='padding:0 10px;'>"+"title"+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+"caption"+"</p>"};
+								slidesarray.push(img_array);
 							}
 						}
 						else
@@ -164,53 +167,6 @@
 	
 	function successCB3() {
 		alert('select statement');
-	}
-	
-    function successCB() {
-
-		
-		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
-			
-			
-					db.transaction(function(transaction) {
-						
-						jQuery.each(data.return,function(i,v) {
-						
-						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						//alert(___installdate+" "+v['path']);
-						transaction.executeSql("insert into images(Path,Caption,Title,fordate,daynumber,installdate) values ('"+v['path']+"','"+replaceall(v['caption'],"'","`")+"','"+replaceall(v['title'],"'","`")+"','"+v['fordate']+"','"+v['id']+"','"+___installdate+"')",[],nullHandler,errorHandler);
-						
-						});
-					},errorHandler,successCB2);
-			
-			
-			
-			
-
-		});
-		
-		
-    }
-
-    </script>
-
-
-	<script type="text/javascript" charset="utf-8">
-	
-		document.addEventListener("deviceready", onDeviceReady(), false);
-		//document.addEventListener('resume',onResume(),false);
-		
-		jQuery(document).ready(function() {
-			
-		});
-
-	</script>
-		
-		
-		
-		<script type="text/javascript">
-				
-					
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 		var	gallery,
@@ -218,44 +174,7 @@
 			i,
 			page,
 			//dots = document.querySelectorAll('#nav li'),
-			slides = [
-				{
-					img: 'img/pic01.jpg',
-					width: 300,
-					height: 213,
-					desc: 'Piazza del Duomo, Florence, Italy'
-				},
-				{
-					img: 'img/pic02.jpg',
-					width: 300,
-					height: 164,
-					desc: 'Tuscan Landscape'
-				},
-				{
-					img: 'img/pic03.jpg',
-					width: 300,
-					height: 213,
-					desc: 'Colosseo, Rome, Italy'
-				},
-				{
-					img: 'img/pic04.jpg',
-					width: 147,
-					height: 220,
-					desc: 'Somewhere near Chinatown, San Francisco'
-				},
-				{
-					img: 'img/pic05.jpg',
-					width: 300,
-					height: 213,
-					desc: 'Medieval guard tower, Asciano, Siena, Italy'
-				},
-				{
-					img: 'img/pic06.jpg',
-					width: 165,
-					height: 220,
-					desc: 'Leaning tower, Pisa, Italy'
-				}
-			];
+			slides = slidesarray;
 
 		gallery = new SwipeView('#wrapper', { numberOfPages: slides.length });
 
@@ -307,6 +226,54 @@
 			var className = gallery.masterPages[gallery.currentMasterPage].className;
 			/(^|\s)swipeview-active(\s|$)/.test(className) || (gallery.masterPages[gallery.currentMasterPage].className = !className ? 'swipeview-active' : className + ' swipeview-active');
 		});
+	}
+	
+    function successCB() {
+
+		
+		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
+			
+			
+					db.transaction(function(transaction) {
+						
+						jQuery.each(data.return,function(i,v) {
+						
+						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						//alert(___installdate+" "+v['path']);
+						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+						
+						});
+					},errorHandler,successCB2);
+			
+			
+			
+			
+
+		});
+		
+		
+    }
+
+    </script>
+
+
+	<script type="text/javascript" charset="utf-8">
+	
+		document.addEventListener("deviceready", onDeviceReady(), false);
+		//document.addEventListener('resume',onResume(),false);
+		
+		jQuery(document).ready(function() {
+			
+		});
+
+	</script>
+		
+		
+		
+		<script type="text/javascript">
+				
+					
+		
 
 </script>    
     </body>
