@@ -117,7 +117,8 @@
 	}
 	
     function successCB() {
-        alert("success!");
+
+		
 		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
 			jQuery.each(data.return,function(i,v) {
 			
@@ -128,7 +129,10 @@
 			
 			
 			});
+			
+			alert('each completed');
 		});
+		
 		
     }
 
