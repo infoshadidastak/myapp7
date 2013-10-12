@@ -84,6 +84,8 @@
 		alert('device ready');
         
         db.transaction(populateDB, errorCB, successCB);
+		
+		alert('loop completed, all data inserted');
     }
 
     // Populate the database
@@ -130,7 +132,7 @@
 			
 			});
 			
-			alert('each completed');
+
 		});
 		
 		
@@ -159,7 +161,7 @@
 			el,
 			i,
 			page,
-			dots = document.querySelectorAll('#nav li'),
+			//dots = document.querySelectorAll('#nav li'),
 			slides = [
 				{
 					img: 'img/pic01.jpg',
