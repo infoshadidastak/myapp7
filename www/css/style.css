@@ -342,7 +342,7 @@ body {
 	padding:10px 0;
 	display:block;
 	/*background:rgba(0,0,0,0.75);*/
-	background:url('img/caption.jpg');
+	background:url('../img/caption.jpg');
 	font-size:20px;
 	text-shadow:0 1px 0 #000;
 	text-align:left;
