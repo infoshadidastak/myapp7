@@ -50,7 +50,7 @@
 		
     <script type="text/javascript" charset="utf-8">
 	var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
-	var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+	var db = window.openDatabase("Database", "1.0", "Cordova Demo1", 200000);
     // Wait for device API libraries to load
     //
 	function replaceall(str,replace,with_this)
@@ -139,16 +139,19 @@
 
 		
 		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
-			jQuery.each(data.return,function(i,v) {
+			
 			
 					db.transaction(function(transaction) {
+					
+						jQuery.each(data.return,function(i,v) {
 						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
 						
+						});
 					},errorHandler,successCB2);
 			
 			
-			});
+			
 			
 
 		});
