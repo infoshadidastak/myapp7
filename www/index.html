@@ -163,7 +163,7 @@
 						if (result != null && result.rows != null) {
 							for (var i = 0; i < result.rows.length; i++) {
 								var row = result.rows.item(i);
-								var img_array={img:"img/"+row['Path'],width:350,height:535,desc:"<div style='padding:0 10px;'>"+"this is title"+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+"caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption"+"</p>"};
+								var img_array={img:"img/"+row['Path'],width:350,height:490,desc:"<div style='padding:0 10px;'>"+row['Title']+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+row['Caption']+"</p>"};
 								slidesarray.push(img_array);
 							}
 						}
