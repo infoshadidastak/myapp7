@@ -49,10 +49,31 @@
 		
 		
     <script type="text/javascript" charset="utf-8">
-
+	var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
+	var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
     // Wait for device API libraries to load
     //
-	
+	function replaceall(str,replace,with_this)
+	{
+    var str_hasil ="";
+    var temp;
+
+    for(var i=0;i<str.length;i++) // not need to be equal. it causes the last change: undefined..
+    {
+        if (str[i] == replace)
+        {
+            temp = with_this;
+        }
+        else
+        {
+                temp = str[i];
+        }
+
+        str_hasil += temp;
+    }
+
+    return str_hasil;
+	}
     // device APIs are available
     //
 	function onResume() {
@@ -61,29 +82,54 @@
 	
     function onDeviceReady() {
 		alert('device ready');
-        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        
         db.transaction(populateDB, errorCB, successCB);
     }
 
     // Populate the database
     //
     function populateDB(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS DEMO');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+        //alert('populateDB');
+		tx.executeSql('DROP TABLE IF EXISTS images ',[],nullHandler,errorHandler);
+		tx.executeSql('DROP TABLE IF EXISTS appdata',[],nullHandler,errorHandler);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS `images` (`ImageID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`Path` VARCHAR(255) NULL,`Title` VARCHAR(255) NULL,`Caption` TEXT NULL,`Caption2` TEXT NULL,`URL` VARCHAR(255) NULL,`ad` VARCHAR(255) NULL,`fordate` VARCHAR(15) NULL,`showdate` VARCHAR(15) NULL,`daynumber` VARCHAR(15) NULL,`installdate` Date NULL)",[],nullHandler,errorHandler);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS `appdata` (`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`installdate` VARCHAR(15) NULL)",[],nullHandler,errorHandler);
+		//alert("populate db function call");
     }
 
     // Transaction error callback
     //
+	function errorHandler(transaction, error) {
+        alert('Error: ' + error.message + ' code: ' + error.code);
+	}	 
+	
+	function nullHandler(){ } 
+
     function errorCB(tx, err) {
         alert("Error processing SQL: "+err);
     }
 
     // Transaction success callback
     //
+	
+	function successCB2() {
+		alert('data inserted');
+	}
+	
     function successCB() {
         alert("success!");
+		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
+			jQuery.each(data.return,function(i,v) {
+			
+					db.transaction(function(transaction) {
+						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+					},errorHandler,successCB2);
+			
+			
+			});
+		});
+		
     }
 
     </script>
@@ -92,7 +138,7 @@
 	<script type="text/javascript" charset="utf-8">
 	
 		document.addEventListener("deviceready", onDeviceReady(), false);
-		document.addEventListener('resume',onResume(),false);
+		//document.addEventListener('resume',onResume(),false);
 		
 		jQuery(document).ready(function() {
 			
