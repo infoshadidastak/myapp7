@@ -66,13 +66,14 @@
     // Wait for device API libraries to load
     //
 	
-	function dateAddDays( /*string dd/mm/yyyy*/ datstr, /*int*/ ndays){
+	function dateAddDays(datstr,ndays){
+	
 		alert(datstr+ndays);
-		var dattmp = datstr.split('-').reverse().join('-'),
-		nwdate =  new Date(dattmp);
+		var dattmp = datstr.split('-').reverse().join('-');
+		var nwdate =  new Date(dattmp);
 		nwdate.setDate(nwdate.getDate()+ndays||1);
 		return [ nwdate.getFullYear(),zeroPad(nwdate.getMonth()+1,10),zeroPad(nwdate.getDate(),10)].join('-');
-}
+	}
 
 	function replaceall(str,replace,with_this)
 	{
@@ -163,8 +164,9 @@
 			
 			
 					db.transaction(function(transaction) {
-					
+						alert('before db');
 						jQuery.each(data.return,function(i,v) {
+						alert(day1+"-"+month1+"-"+year1,___counter);
 						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						alert(___installdate);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
