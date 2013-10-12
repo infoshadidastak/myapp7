@@ -49,9 +49,7 @@
 		
 		
     <script type="text/javascript" charset="utf-8">
-	var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
-	var db = windowopenDatabase("Database", "1.0", "Cordova Demo1", 200000);
-	var ___counter=0;
+	
 	// current date
 	
 	// current date
@@ -96,7 +94,10 @@
 	
     function onDeviceReady() {
 		//alert('device ready');
-		/*
+		var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
+		var db = window.openDatabase("Database", "1.0", "Cordova Demo1", 200000);
+		var ___counter=0;
+		
 		var d1 = new Date();
 
 		var month1 = d1.getMonth()+1;
@@ -108,9 +109,8 @@
 		month1="0"+month1;
 		if(day1<10)
 		day1="0"+day1;
-        //alert('db.transaction');
-		*/
 		
+        //alert('db.transaction');
         db.transaction(populateDB, errorCB, successCB);
 		
 		
@@ -170,11 +170,11 @@
 			
 			
 					db.transaction(function(transaction) {
-						//alert('before db');
+						alert('before db');
 						jQuery.each(data.return,function(i,v) {
-						//alert(day1+"-"+month1+"-"+year1,___counter);
-						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						//alert(___installdate);
+						alert(day1+"-"+month1+"-"+year1,___counter);
+						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						alert(___installdate);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
 						
 						});
