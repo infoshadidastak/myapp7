@@ -67,6 +67,7 @@
     //
 	
 	function dateAddDays( /*string dd/mm/yyyy*/ datstr, /*int*/ ndays){
+		alert(datstr+ndays);
 		var dattmp = datstr.split('-').reverse().join('-'),
 		nwdate =  new Date(dattmp);
 		nwdate.setDate(nwdate.getDate()+ndays||1);
