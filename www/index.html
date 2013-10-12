@@ -113,7 +113,7 @@
 		if(day1<10)
 		day1="0"+day1;
 		
-        alert(day1+" "+month1+" "+year1);
+        //alert(day1+" "+month1+" "+year1);
         db.transaction(populateDB, errorCB, successCB);
 		
 		
@@ -176,8 +176,8 @@
 						
 						jQuery.each(data.return,function(i,v) {
 						
-						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						alert(___installdate);
+						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						//alert(___installdate+" "+v['path']);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
 						
 						});
