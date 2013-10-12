@@ -122,7 +122,7 @@
 			jQuery.each(data.return,function(i,v) {
 			
 					db.transaction(function(transaction) {
-						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
 					},errorHandler,successCB2);
 			
