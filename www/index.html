@@ -55,6 +55,10 @@
 	
     // device APIs are available
     //
+	function onResume() {
+		alert('on resume');
+	}
+	
     function onDeviceReady() {
 		alert('device ready');
         var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
@@ -86,7 +90,10 @@
 
 
 	<script type="text/javascript" charset="utf-8">
-		document.addEventListener("deviceready", onDeviceReady(), true);
+	
+		document.addEventListener("deviceready", onDeviceReady(), false);
+		document.addEventListener('resume',onResume(),false);
+		
 		jQuery(document).ready(function() {
 			
 		});
