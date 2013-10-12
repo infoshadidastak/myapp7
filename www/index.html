@@ -53,20 +53,7 @@
 	var db = windowopenDatabase("Database", "1.0", "Cordova Demo1", 200000);
 	var ___counter=0;
 	// current date
-	alert('start');
-	var d1 = new Date();
-	alert(d1);
-	var month1 = d1.getMonth()+1;
-	alert(month1);
-	var day1 = d1.getDate();
-	var year1 = d1.getFullYear();
-	alert(day1);
-	if(month1<10)
-	month1="0"+month1;
-	if(day1<10)
-	day1="0"+day1;
-	alert(year1+"-"+month1+"-"+day1);
-	alert('end');
+	
 	// current date
     // Wait for device API libraries to load
     //
@@ -109,6 +96,20 @@
 	
     function onDeviceReady() {
 		alert('device ready');
+		alert('start');
+		var d1 = new Date();
+		alert(d1);
+		var month1 = d1.getMonth()+1;
+		alert(month1);
+		var day1 = d1.getDate();
+		var year1 = d1.getFullYear();
+		alert(day1);
+		if(month1<10)
+		month1="0"+month1;
+		if(day1<10)
+		day1="0"+day1;
+		alert(year1+"-"+month1+"-"+day1);
+		alert('end');
         
         db.transaction(populateDB, errorCB, successCB);
 		
