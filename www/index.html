@@ -117,12 +117,12 @@
     // Populate the database
     //
     function populateDB(tx) {
-        alert('populateDB');
+        //alert('populateDB');
 		tx.executeSql('DROP TABLE IF EXISTS images ',[],nullHandler,errorHandler);
 		tx.executeSql('DROP TABLE IF EXISTS appdata',[],nullHandler,errorHandler);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS `images` (`ImageID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`Path` VARCHAR(255) NULL,`Title` VARCHAR(255) NULL,`Caption` TEXT NULL,`Caption2` TEXT NULL,`URL` VARCHAR(255) NULL,`ad` VARCHAR(255) NULL,`fordate` VARCHAR(15) NULL,`showdate` VARCHAR(15) NULL,`daynumber` VARCHAR(15) NULL,`installdate` Date NULL)",[],nullHandler,errorHandler);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS `appdata` (`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`installdate` VARCHAR(15) NULL)",[],nullHandler,errorHandler);
-		alert("end populate db function call");
+		//alert("end populate db function call");
     }
 
     // Transaction error callback
@@ -168,11 +168,11 @@
 			
 			
 					db.transaction(function(transaction) {
-						alert('before db');
+						//alert('before db');
 						jQuery.each(data.return,function(i,v) {
-						alert(day1+"-"+month1+"-"+year1,___counter);
-						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						alert(___installdate);
+						//alert(day1+"-"+month1+"-"+year1,___counter);
+						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						//alert(___installdate);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
 						
 						});
