@@ -51,8 +51,32 @@
     <script type="text/javascript" charset="utf-8">
 	var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
 	var db = window.openDatabase("Database", "1.0", "Cordova Demo1", 200000);
+	var ___counter=0;
+	// current date
+	var d1 = new Date();
+	var month1 = d1.getMonth()+1;
+	var day1 = d1.getDate();
+	var year1 = d1.getFullYear();
+	if(month1<10)
+	month1="0"+month1;
+	if(day1<10)
+	day1="0"+day1;
+	//console.log(year1+"-"+month1+"-"+day1);
+	// current date
+	
+	
     // Wait for device API libraries to load
     //
+	
+	function dateAddDays( /*string dd/mm/yyyy*/ datstr, /*int*/ ndays){
+		var dattmp = datstr.split('-').reverse().join('-'),
+		nwdate =  new Date(dattmp);
+		nwdate.setDate(nwdate.getDate()+ndays||1);
+		return [ nwdate.getFullYear()
+          ,zeroPad(nwdate.getMonth()+1,10)
+          ,zeroPad(nwdate.getDate(),10)].join('-');
+	}
+
 	function replaceall(str,replace,with_this)
 	{
     var str_hasil ="";
@@ -121,7 +145,7 @@
 						if (result != null && result.rows != null) {
 							for (var i = 0; i < result.rows.length; i++) {
 								var row = result.rows.item(i);
-								alert(row['Path']);
+								alert(row['Path']+" "+row['Caption']+" "+row['Title']+" "+row['fordate']+" "+row['installdate']+" "+row['id']);
 							}
 						}
 						else
@@ -132,7 +156,7 @@
 	}
 	
 	function successCB3() {
-		alert('select statement');
+		alert('successCB3');
 	}
 	
     function successCB() {
@@ -144,8 +168,8 @@
 					db.transaction(function(transaction) {
 					
 						jQuery.each(data.return,function(i,v) {
-						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+						___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+						transaction.executeSql("insert into images(Path,Caption,Title,fordate,daynumber,installdate) values ('"+v['path']+"','"+replaceall(v['caption'],"'","`")+"','"+replaceall(v['title'],"'","`")+"','"+v['fordate']+"','"+v['id']+"','"+___installdate+"')",[],nullHandler,errorHandler);
 						
 						});
 					},errorHandler,successCB2);
