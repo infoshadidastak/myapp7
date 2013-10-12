@@ -96,7 +96,7 @@
 	
     function onDeviceReady() {
 		//alert('device ready');
-
+		/*
 		var d1 = new Date();
 
 		var month1 = d1.getMonth()+1;
@@ -109,6 +109,8 @@
 		if(day1<10)
 		day1="0"+day1;
         //alert('db.transaction');
+		*/
+		
         db.transaction(populateDB, errorCB, successCB);
 		
 		
