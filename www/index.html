@@ -85,7 +85,7 @@
         
         db.transaction(populateDB, errorCB, successCB);
 		
-		alert('loop completed, all data inserted');
+		
     }
 
     // Populate the database
@@ -118,6 +118,10 @@
 		alert('data inserted');
 	}
 	
+	function successCB3() {
+		alert('select statement');
+	}
+	
     function successCB() {
 
 		
@@ -127,6 +131,7 @@
 					db.transaction(function(transaction) {
 						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+						
 					},errorHandler,successCB2);
 			
 			
@@ -155,6 +160,20 @@
 		
 		
 		<script type="text/javascript">
+				var query="select * from images";
+				db.transaction(function(transaction) {
+				    transaction.executeSql(query,[],function(transaction, result) {
+						if (result != null && result.rows != null) {
+							for (var i = 0; i < result.rows.length; i++) {
+								var row = result.rows.item(i);
+							}
+						}
+						else
+						{
+						}
+                    },errorHandler); 
+                },errorHandler,successCB3);
+					
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 		var	gallery,
