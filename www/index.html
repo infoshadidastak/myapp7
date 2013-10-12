@@ -178,7 +178,7 @@
 						
 						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
 						//alert(___installdate+" "+v['path']);
-						transaction.executeSql("insert into images(Path) values ('"+v['path']+"')",[],nullHandler,errorHandler);
+						transaction.executeSql("insert into images(Path,Caption,Title,fordate,daynumber,installdate) values ('"+v['path']+"','"+replaceall(v['caption'],"'","`")+"','"+replaceall(v['title'],"'","`")+"','"+v['fordate']+"','"+v['id']+"','"+___installdate+"')",[],nullHandler,errorHandler);
 						
 						});
 					},errorHandler,successCB2);
