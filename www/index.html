@@ -43,7 +43,7 @@
         
         <title>Hello World</title>
     </head>
-    <body onload="onLoad();">
+    <body>
         <div id="wrapper"></div>
 			
 		
@@ -86,15 +86,7 @@
 
 
 	<script type="text/javascript" charset="utf-8">
-		
-		function onLoad() {
-			//document.addEventListener("deviceready", onDeviceReady, false);
-			alert('onLoad');
-			document.addEventListener("deviceready", onDeviceReady(), true);
-			
-		}
-
-	
+		document.addEventListener("deviceready", onDeviceReady(), true);
 		jQuery(document).ready(function() {
 			
 		});
