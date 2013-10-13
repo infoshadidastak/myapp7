@@ -55,9 +55,7 @@
 		<script type='text/javascript'>
 		
 		jQuery(document).ready(function() {
-			jQuery('div[id=share]').share({
-				networks: ['facebook','pinterest','googleplus','twitter']
-			});
+			
 		});
 		
 		</script>
@@ -140,7 +138,9 @@
 		day1="0"+day1;
 		
         //alert(day1+" "+month1+" "+year1);
-		
+		jQuery('div[id=share]').share({
+				networks: ['facebook','pinterest','googleplus','twitter']
+		});
         db.transaction(populateDB, errorCB, successCB);
 		
 		
