@@ -312,13 +312,13 @@
 
 
 	
-		//console.log(shareimage);
+	//console.log(shareimage);
 
-		jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
-		jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
-		jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
-		jQuery('a.share-icon-twitter').attr('href','https://twitter.com/share?via=http://365appseries.com/timeflies/'+shareimage+'&text=');
-		//jQuery('a.share-icon-linkedin').attr('href','http://www.linkedin.com/shareArticle?mini=true&url=http://365appseries.com/timeflies/'+shareimage+'&title=&source='+shareimage+'');
+	jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
+	jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
+	jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
+	jQuery('a.share-icon-twitter').attr('href','https://twitter.com/share?via=http://365appseries.com/timeflies/'+shareimage+'&text=');
+	//jQuery('a.share-icon-linkedin').attr('href','http://www.linkedin.com/shareArticle?mini=true&url=http://365appseries.com/timeflies/'+shareimage+'&title=&source='+shareimage+'');
 		
 	}
 	
@@ -353,14 +353,14 @@
 		
 	</script>
 		
-	<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share">asdfasdf</div>
+		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
 	
 	<script type='text/javascript'>
 		
 		jQuery(document).ready(function() {
-			//jQuery('div[id=share]').share({
-			//	networks: ['facebook','pinterest','googleplus','twitter']
-			//});
+			jQuery('div[id=share]').share({
+				networks: ['facebook','pinterest','googleplus','twitter']
+			});
 		});
 		
 	</script>
