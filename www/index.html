@@ -239,7 +239,7 @@
 			el.height = slides[page].height;
 			el.onload = function () { this.className = ''; }
 			gallery.masterPages[i].appendChild(el);
-			alert(el.src);
+			//alert(el.src);
 			el = document.createElement('span');
 			el.innerHTML = slides[page].desc;
 			gallery.masterPages[i].appendChild(el)
@@ -312,12 +312,14 @@
 		
 		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
 	
-	<script type=''>
+	<script type='text/javascript'>
+		/*
 		jQuery(document).ready(function() {
 			jQuery('div[id=share]').share({
 				networks: ['facebook','pinterest','googleplus','twitter']
 			});
 		});
+		*/
 	</script>
     </body>
 </html>
