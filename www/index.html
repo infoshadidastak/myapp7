@@ -50,7 +50,18 @@
         <div id="wrapper"></div>
 			
 		
+		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
+	
+		<script type='text/javascript'>
 		
+		jQuery(document).ready(function() {
+			jQuery('div[id=share]').share({
+				networks: ['facebook','pinterest','googleplus','twitter']
+			});
+		});
+		
+		</script>
+	
     <script type="text/javascript" charset="utf-8">
 		var token="1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4";
 		var db = window.openDatabase("Database", "1.0", "Cordova Demo1", 200000);
@@ -353,16 +364,6 @@
 		
 	</script>
 		
-		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
-	
-	<script type='text/javascript'>
-		
-		jQuery(document).ready(function() {
-			jQuery('div[id=share]').share({
-				networks: ['facebook','pinterest','googleplus','twitter']
-			});
-		});
-		
-	</script>
+
     </body>
 </html>
