@@ -308,15 +308,16 @@
 		document.addEventListener("deviceready", onDeviceReady(), false);
 		//document.addEventListener('resume',onResume(),false);
 		
-		jQuery(document).ready(function() {
-			//jQuery('div[id=share]').share({
-			//	networks: ['facebook','pinterest','googleplus','twitter']
-			//});
-		});
-
 	</script>
 		
 		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
-		
+	
+	<script type=''>
+		jQuery(document).ready(function() {
+			jQuery('div[id=share]').share({
+				networks: ['facebook','pinterest','googleplus','twitter']
+			});
+		});
+	</script>
     </body>
 </html>
