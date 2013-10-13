@@ -57,6 +57,7 @@
 		var day1="";
 		var year1="";
 		var slidesarray=[];
+		var databaseexists="No";
 		
     // Wait for device API libraries to load
     //
@@ -175,6 +176,44 @@
                 },errorHandler,successCB3);
 	}
 	
+	function databaseexist() {
+			if(databaseexists=="Yes") {
+				slidesarray=[];
+					var query="select * from images";
+					db.transaction(function(transaction) {
+						transaction.executeSql(query,[],function(transaction, result) {
+							if (result != null && result.rows != null) {
+								for (var i = 0; i < result.rows.length; i++) {
+									var row = result.rows.item(i);
+									var img_array={img:"img/"+row['Path'],width:350,height:490,desc:"<div style='padding:0 10px;'>"+row['Title']+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+row['Caption']+"</p>"};
+									slidesarray.push(img_array);
+								}
+							}
+							else
+							{
+							}
+						},errorHandler); 
+					},errorHandler,successCB3);
+			}
+			else
+			{
+					jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,	function(data){
+						db.transaction(function(transaction) {
+							
+							jQuery.each(data.return,function(i,v) {
+							
+							//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
+							//alert(___installdate+" "+v['path']);
+							transaction.executeSql("insert into images(Path,Title,Caption,fordate) values ('"+v['path']+"','"+replaceall(v['title'],"'","`")+"','"+replaceall(v['caption'],"'","`")+"','"+v['fordate']+"')",[],nullHandler,errorHandler);
+							
+							});
+						},errorHandler,successCB2);
+					});
+			
+			}
+			
+	}
+	
 	function successCB3() {
 		//alert('select statement');
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -239,29 +278,24 @@
 	}
 	
     function successCB() {
-
 		
-		jQuery.getJSON("http://365appseries.com/timeflies/webapp/webservices/downloadimages.php?jsoncallback=?&token="+token,function(data){
-			
-			
-					db.transaction(function(transaction) {
-						
-						jQuery.each(data.return,function(i,v) {
-						
-						//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-						//alert(___installdate+" "+v['path']);
-						transaction.executeSql("insert into images(Path,Title,Caption,fordate) values ('"+v['path']+"','"+replaceall(v['title'],"'","`")+"','"+replaceall(v['caption'],"'","`")+"','"+v['fordate']+"')",[],nullHandler,errorHandler);
-						
-						});
-					},errorHandler,successCB2);
-			
-			
-			
-			
-
-		});
-		
-		
+				var query="select * from images order by 1";
+				db.transaction(function(transaction) {
+				    transaction.executeSql(query,[],function(transaction, result) {
+						if (result != null && result.rows != null) {
+							for (var i = 0; i < result.rows.length; i++) {
+								var row = result.rows.item(i);
+								if(row['ImageID']>0) {
+									databaseexists="Yes";
+									
+								}
+							}
+						}
+						else
+						{
+						}
+                    },errorHandler); 
+                },errorHandler,databaseexist);
     }
 
     </script>
