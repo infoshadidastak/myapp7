@@ -47,6 +47,18 @@
         <title>Hello World</title>
     </head>
     <body>
+		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
+	
+		<script type='text/javascript'>
+			
+			jQuery(window).load(function() {
+				jQuery('div[id=share]').share({
+					networks: ['facebook','pinterest','googleplus','twitter']
+				});
+			});
+			
+		</script>
+		
         <div id="wrapper"></div>
 			
 		
@@ -353,16 +365,6 @@
 		
 	</script>
 		
-		<div style="" id="share">asdfasdf</div>
 	
-	<script type='text/javascript'>
-		
-		jQuery(document).ready(function() {
-			jQuery('div[id=share]').share({
-				networks: ['facebook','pinterest','googleplus','twitter']
-			});
-		});
-		
-	</script>
     </body>
 </html>
