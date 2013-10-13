@@ -30,10 +30,13 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/jquery.share.css" type="text/css" />
 		<script type="text/javascript" src="js/phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/swipeview.js"></script>
 		<script type="text/javascript" src="js/jquerymin.js"></script>
+		<script src="js/jquery.share.js" type="text/javascript" language="JavaScript"></script>
+
 	
         <script type="text/javascript">
             app.initialize();
@@ -58,6 +61,7 @@
 		var year1="";
 		var slidesarray=[];
 		var databaseexists="No";
+		var shareimage="";
 		
     // Wait for device API libraries to load
     //
@@ -201,9 +205,7 @@
 						db.transaction(function(transaction) {
 							
 							jQuery.each(data.return,function(i,v) {
-							
-							//___installdate=dateAddDays(day1+"-"+month1+"-"+year1,___counter);
-							//alert(___installdate+" "+v['path']);
+
 							transaction.executeSql("insert into images(Path,Title,Caption,fordate) values ('"+v['path']+"','"+replaceall(v['title'],"'","`")+"','"+replaceall(v['caption'],"'","`")+"','"+v['fordate']+"')",[],nullHandler,errorHandler);
 							
 							});
@@ -237,7 +239,7 @@
 			el.height = slides[page].height;
 			el.onload = function () { this.className = ''; }
 			gallery.masterPages[i].appendChild(el);
-
+			alert(el.src);
 			el = document.createElement('span');
 			el.innerHTML = slides[page].desc;
 			gallery.masterPages[i].appendChild(el)
@@ -307,18 +309,14 @@
 		//document.addEventListener('resume',onResume(),false);
 		
 		jQuery(document).ready(function() {
-			
+			jQuery('div[id=share]').share({
+				networks: ['facebook','pinterest','googleplus','twitter']
+			});
 		});
 
 	</script>
 		
+		<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
 		
-		
-		<script type="text/javascript">
-				
-					
-		
-
-</script>    
     </body>
 </html>
