@@ -304,9 +304,10 @@
 			
 			
 			__img=gallery.masterPages[gallery.currentMasterPage].querySelector('img');
-			alert(__img);
+			=jQuery(__img).attr('src');
+			alert(__src);
 			/*
-			__src=jQuery(__img).attr('src');
+			
 			__src=__src.split("/img/");
 			shareimage=__src[1].split(".")[0]+".html";
 		
@@ -325,9 +326,10 @@
 			
 			
 			__img=gallery.masterPages[gallery.currentMasterPage].querySelector('img');
-			alert(__img);
-			/*
 			__src=jQuery(__img).attr('src');
+			alert(__src);
+			/*
+			
 			__src=__src.split("/img/");
 			shareimage=__src[1].split(".")[0]+".html";
 
