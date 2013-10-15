@@ -48,7 +48,7 @@
     </head>
     <body>
         <div id="wrapper">
-			<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:70px;" id="share"></div>
+			<div style="position:absolute;z-index:9999; margin-top:3px; margin-left:100px;" id="share"></div>
 			<div style="position:absolute;z-index:9999; margin-top:20px; margin-left:70px;" id="test1"></div>
 			<div style="position:absolute;z-index:9999; margin-top:40px; margin-left:70px;" id="test2"></div>
 		</div>
@@ -186,7 +186,7 @@
 						if (result != null && result.rows != null) {
 							for (var i = 0; i < result.rows.length; i++) {
 								var row = result.rows.item(i);
-								var img_array={img:"img/"+row['Path'],width:350,height:490,desc:"<div style='padding:0 10px;'>"+row['Title']+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+row['Caption']+"</p>"};
+								var img_array={img:"img/"+row['Path'],width:350,height:500,desc:"<div style='padding:0 10px;'>"+row['Title']+"</div> <p style='font-size:13.5px; padding:0 10px; text-align:left;'>"+row['Caption']+"</p>"};
 								slidesarray.push(img_array);
 							}
 						}
