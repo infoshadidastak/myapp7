@@ -160,7 +160,9 @@ var SwipeView = (function (window, document) {
 				this.wrapper.removeEventListener('mouseout', this, false);
 			}*/
 		},
-
+		getCurrentPage: function(){
+			return this.pageIndex;
+		},
 		refreshSize: function () {
 			this.wrapperWidth = this.wrapper.clientWidth;
 			this.wrapperHeight = this.wrapper.clientHeight;
