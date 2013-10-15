@@ -310,7 +310,7 @@
 			__src=jQuery(__img).attr('src');
 			__src=__src.split("img/");
 			shareimage1=__src[1].split(".")[0]+".html";
-			jQuery('div[id=test1]').html(shareimage1);
+			//jQuery('div[id=test1]').html(shareimage1);
 			jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
 			jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
 			jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
@@ -329,7 +329,7 @@
 			__src=jQuery(__img).attr('src');
 			__src=__src.split("img/");
 			shareimage2=__src[1].split(".")[0]+".html";
-			jQuery('div[id=test2]').html(shareimage2);
+			
 			jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
 			jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
 			jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
@@ -339,10 +339,13 @@
 			//jQuery('a.share-icon-linkedin').attr('href','http://www.linkedin.com/shareArticle?mini=true&url=http://365appseries.com/timeflies/'+shareimage+'&title=&source='+shareimage+'');
 			
 		});
-		
+		gallery.onTouchEnd(function () {
+			jQuery('div[id=share]').html("on touch end");
+		});
 		
 	gallery.goToPage(slidesarray.length);
-	
+	jQuery('div[id=test1]').html(shareimage1);
+	jQuery('div[id=test2]').html(shareimage2);
 	jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
 	jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
 	jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);

@@ -142,6 +142,11 @@ var SwipeView = (function (window, document) {
 			this.wrapper.addEventListener('swipeview-touchstart', fn, false);
 			this.customEvents.push(['touchstart', fn]);
 		},
+		
+		onTouchEnd: function (fn) {
+			this.wrapper.addEventListener('swipeview-touchend', fn, false);
+			this.customEvents.push(['touchend', fn]);
+		},
 
 		destroy: function () {
 			while ( this.customEvents.length ) {
