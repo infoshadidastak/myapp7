@@ -325,6 +325,8 @@
 			__src=__src.split("/img/");
 			shareimage=__src[1].split(".")[0]+".html";
 			//console.log("onMoveOut: "+shareimage);
+			
+			alert(shareimage);
 
 			jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
 			jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
