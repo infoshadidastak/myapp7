@@ -180,7 +180,7 @@
 	
 	function successCB2() {
 				slidesarray=[];
-				var query="select * from images where fordate<='"+year1+"-"+month1+"-"+day1+'";
+				var query="select * from images";
 				db.transaction(function(transaction) {
 				    transaction.executeSql(query,[],function(transaction, result) {
 						if (result != null && result.rows != null) {
@@ -200,7 +200,7 @@
 	function databaseexist() {
 			if(databaseexists=="Yes") {
 				slidesarray=[];
-					var query="select * from images where fordate<='"+year1+"-"+month1+"-"+day1+'";
+					var query="select * from images";
 					db.transaction(function(transaction) {
 						transaction.executeSql(query,[],function(transaction, result) {
 							if (result != null && result.rows != null) {
