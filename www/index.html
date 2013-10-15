@@ -301,27 +301,26 @@
 
 		gallery.onMoveOut(function () {
 			gallery.masterPages[gallery.currentMasterPage].className = gallery.masterPages[gallery.currentMasterPage].className.replace(/(^|\s)swipeview-active(\s|$)/, '');
-			
+			/*
 			__img=gallery.masterPages[gallery.currentMasterPage].querySelector('img');
 			__src=jQuery(__img).attr('src');
 			__src=__src.split("/img/");
 			shareimage=__src[1].split(".")[0]+".html";
-			alert(shareimage);
 			//console.log("onMoveOut: "+shareimage);
-			/*
+
 			jQuery('a.share-icon-facebook').attr('href','http://www.facebook.com/share.php?u=http://365appseries.com/timeflies/'+shareimage+'');
 			jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
 			jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
 			jQuery('a.share-icon-twitter').attr('href','https://twitter.com/share?via=http://365appseries.com/timeflies/'+shareimage+'&text=');
 			//jQuery('a.share-icon-linkedin').attr('href','http://www.linkedin.com/shareArticle?mini=true&url=http://365appseries.com/timeflies/'+shareimage+'&title=&source='+shareimage+'');
 			*/
-			
+			alert('move out');
 		});
 
 		gallery.onMoveIn(function () {
 			var className = gallery.masterPages[gallery.currentMasterPage].className;
 			/(^|\s)swipeview-active(\s|$)/.test(className) || (gallery.masterPages[gallery.currentMasterPage].className = !className ? 'swipeview-active' : className + ' swipeview-active');
-			
+			alert('move in');
 		});
 		
 		
@@ -335,8 +334,9 @@
 	jQuery('a.share-icon-pinterest').attr('href','http://pinterest.com/pin/create/button/?url=http://365appseries.com/timeflies/'+shareimage+'&media=&description=');
 	jQuery('a.share-icon-googleplus').attr('href','https://plusone.google.com/_/+1/confirm?hl=en&url=http://365appseries.com/timeflies/'+shareimage);
 	jQuery('a.share-icon-twitter').attr('href','https://twitter.com/share?via=http://365appseries.com/timeflies/'+shareimage+'&text=');
+	*/
 	//jQuery('a.share-icon-linkedin').attr('href','http://www.linkedin.com/shareArticle?mini=true&url=http://365appseries.com/timeflies/'+shareimage+'&title=&source='+shareimage+'');
-	*/	
+		
 	}
 	
     function successCB() {
